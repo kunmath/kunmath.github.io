@@ -1,0 +1,25 @@
+---
+import Base from '../../layouts/Base.astro';
+import PostList from '../../components/PostList.astro';
+import { getPublishedPosts, type Post } from '../../lib/posts';
+
+const posts = await getPublishedPosts();
+
+const byYear = new Map<number, Post[]>();
+for (const post of posts) {
+  const year = post.data.date.getUTCFullYear();
+  byYear.set(year, [...(byYear.get(year) ?? []), post]);
+}
+---
+
+<Base title="Blog" description="Blog posts on embedded systems, IoT platforms, and developer tooling.">
+  <div class="section-heading"><h2>Blog</h2></div>
+  {
+    [...byYear.entries()].map(([year, yearPosts]) => (
+      <section>
+        <p class="year-label">{year}</p>
+        <PostList posts={yearPosts} />
+      </section>
+    ))
+  }
+</Base>

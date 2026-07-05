@@ -1,0 +1,16 @@
+---
+import { SITE } from '../consts';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container footer-row">
+    <span>© {year} {SITE.author}</span>
+    <span>
+      <a href={SITE.github}>GitHub</a> · <a href={SITE.linkedin}>LinkedIn</a> ·
+      <a href={`${base}/rss.xml`}>RSS</a>
+    </span>
+  </div>
+</footer>

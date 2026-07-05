@@ -1,0 +1,77 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../consts';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<Base title="About" description="About Kunal Mathur — embedded systems and IoT engineer in Bangalore.">
+  <article>
+    <header class="post-header about-header">
+      <h1>About</h1>
+      <img
+        class="avatar"
+        src={`${base}/profile.jpg`}
+        alt="Portrait of Kunal Mathur"
+        width="301"
+        height="330"
+        loading="eager"
+      />
+    </header>
+    <div class="prose">
+      <p>
+        I'm Kunal Mathur, a software engineer focused on architecting and delivering
+        scalable IoT products and embedded platforms that evolve with growing business
+        and technical requirements. I specialize in C++ development, Embedded Linux,
+        and Yocto-based platform engineering.
+      </p>
+      <p>
+        My passion centers on the intersection of hardware and software — building
+        systems that bridge the physical and digital worlds. I've developed expertise
+        in taking embedded platforms from prototype to production, always with an eye
+        toward maintainability and future growth.
+      </p>
+      <p>
+        Currently I'm a software engineer at <strong>Teledyne Isco</strong>, where I
+        develop Yocto images and drive migration projects that move products from
+        off-the-shelf Linux distributions onto Yocto-based platforms — bringing
+        reproducible builds and long-term maintainability to instrumentation that
+        has to run reliably in the field.
+      </p>
+      <p>
+        Previously, at <strong>Sensormatic (Johnson Controls)</strong>, I architected
+        codebases spanning multiple product lines and led a team of engineers through
+        complex technical challenges while keeping a strong product focus. I studied
+        Electronics and Communication Engineering at The LNM Institute of Information
+        Technology.
+      </p>
+
+      <h2>What I work with</h2>
+      <ul>
+        <li><strong>Languages</strong> — C++, C, Python, Bash</li>
+        <li><strong>Platforms</strong> — Embedded Linux, Yocto, systemd, ARM &amp; edge devices</li>
+        <li><strong>Tooling</strong> — CMake, BitBake, GCC, GDB, Docker, OTA update systems</li>
+        <li>
+          <strong>Specialties</strong> — IoT platform architecture, embedded Linux
+          distribution engineering, cross-product codebase design, remote device
+          management &amp; observability
+        </li>
+      </ul>
+
+      <h2>This site</h2>
+      <p>
+        I write about embedded systems, development tools, gadgets, and whatever tech
+        currently has my attention. Everything here is my own opinion, written by me.
+      </p>
+
+      <h2>Get in touch</h2>
+      <p>
+        I love connecting with fellow engineers to talk embedded systems, IoT
+        architecture, and platform engineering. Reach me by
+        <a href={`mailto:${SITE.email}`}>email</a>, or find me on
+        <a href={SITE.github}>GitHub</a> and <a href={SITE.linkedin}>LinkedIn</a>.
+        I typically reply within a day or two.
+      </p>
+    </div>
+  </article>
+</Base>

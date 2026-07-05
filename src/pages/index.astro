@@ -1,0 +1,57 @@
+---
+import Base from '../layouts/Base.astro';
+import PostList from '../components/PostList.astro';
+import { getPublishedPosts } from '../lib/posts';
+import { SITE } from '../consts';
+
+const posts = (await getPublishedPosts()).slice(0, 5);
+const hasMore = (await getPublishedPosts()).length > 5;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<Base>
+  <section class="hero">
+    <div class="hero-top">
+      <div>
+        <p class="kicker">Embedded Systems · IoT · {SITE.location}</p>
+        <h1>Hi, I'm Kunal <span class="wave-emoji">👋</span></h1>
+      </div>
+      <img
+        class="avatar hero-avatar"
+        src={`${base}/profile.jpg`}
+        alt="Portrait of Kunal Mathur"
+        width="301"
+        height="330"
+        loading="eager"
+      />
+    </div>
+    <p class="lede">
+      I architect <strong>scalable IoT products and embedded platforms</strong> — building
+      C++ and Embedded Linux software for field deployment, and Yocto-based
+      distributions that let multiple product lines share one coherent codebase.
+    </p>
+    <p class="lede">
+      Currently at Teledyne Isco, building Yocto images and migrating products
+      from off-the-shelf Linux distributions to Yocto. Here I write about embedded
+      systems, development tools, and the tech I'm excited about.
+    </p>
+    <ul class="hero-links">
+      <li><a href={SITE.github}>GitHub</a></li>
+      <li><a href={SITE.linkedin}>LinkedIn</a></li>
+      <li><a href={`mailto:${SITE.email}`}>Email</a></li>
+      <li><a href={`${base}/about/`}>More about me</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="section-heading"><h2>Recent writing</h2></div>
+    <PostList posts={posts} />
+    {
+      hasMore && (
+        <p class="view-all">
+          <a href={`${base}/blog/`}>All posts →</a>
+        </p>
+      )
+    }
+  </section>
+</Base>
